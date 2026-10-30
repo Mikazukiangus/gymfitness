@@ -1,0 +1,6 @@
+{
+  "name": "Kinetic Obsidian - Tactical Strength Telemetry",
+  "description": "High-precision strength telemetry, live workout matrix logging, rest chronometer, and macro recomposition system built for serious strength athletes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

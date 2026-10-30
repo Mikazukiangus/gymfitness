@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-space: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+}
+
+:root {
+  --bg-canvas: #F3F5F8;
+  --bg-surface-1: #FFFFFF;
+  --bg-surface-2: #E8EEF5;
+  --bg-recessed: #EBF1F7;
+  --border-subtle: #D0D7DE;
+  --border-row: #E8EEF5;
+  --border-active: #9ED100;
+  --text-high: #0D1117;
+  --text-muted: #57606A;
+  --header-bg: rgba(243, 245, 248, 0.95);
+  --drawer-bg: rgba(255, 255, 255, 0.95);
+  --input-border: #CBD5E1;
+  --row-hover: #F0F4F9;
+  --volt-accent: #78A300;
+  --volt-button: #9ED100;
+  --volt-button-text: #0D1117;
+  --ember-accent: #D9480F;
+  --cyan-accent: #0284C7;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+html.dark {
+  --bg-canvas: #0D1117;
+  --bg-surface-1: #161B22;
+  --bg-surface-2: #21262D;
+  --bg-recessed: #0D1117;
+  --border-subtle: #30363D;
+  --border-row: #21262D;
+  --border-active: #D4FF00;
+  --text-high: #F0F6FC;
+  --text-muted: #8B949E;
+  --header-bg: rgba(16, 20, 26, 0.95);
+  --drawer-bg: rgba(22, 27, 34, 0.95);
+  --input-border: #30363D;
+  --row-hover: #1c2026;
+  --volt-accent: #D4FF00;
+  --volt-button: #D4FF00;
+  --volt-button-text: #0D1117;
+  --ember-accent: #FF5500;
+  --cyan-accent: #00F0FF;
+  --card-shadow: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-high);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-subtle);
+}
+
+/* Kinetic active glow */
+.volt-glow {
+  box-shadow: 0 0 16px -4px rgba(212, 255, 0, 0.35);
+}
+
+html:not(.dark) .volt-glow {
+  box-shadow: 0 0 16px -4px rgba(120, 163, 0, 0.35);
+}
+
+.ember-glow {
+  box-shadow: 0 0 16px -4px rgba(255, 85, 0, 0.35);
+}
+
+.cyan-glow {
+  box-shadow: 0 0 16px -4px rgba(0, 240, 255, 0.3);
+}
+
+/* Tactical semantic classes for instant dark/light support */
+.bg-theme-canvas { background-color: var(--bg-canvas); }
+.bg-theme-card { background-color: var(--bg-surface-1); }
+.bg-theme-elevated { background-color: var(--bg-surface-2); }
+.bg-theme-recessed { background-color: var(--bg-recessed); }
+.border-theme { border-color: var(--border-subtle); }
+.border-theme-row { border-color: var(--border-row); }
+.text-theme-high { color: var(--text-high); }
+.text-theme-muted { color: var(--text-muted); }
+.bg-theme-header { background-color: var(--header-bg); }
+.bg-theme-drawer { background-color: var(--drawer-bg); }
+
+/* Tactical recessed input shadow */
+.tactical-input {
+  background-color: var(--bg-recessed);
+  border-color: var(--input-border);
+  color: var(--text-high);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+html.dark .tactical-input {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
